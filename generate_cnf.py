@@ -18,7 +18,7 @@ def gen_clauses(num_vars, num_clauses=100, file_or_stdout="file"):
     with open(f, 'w') as ofile:
         ofile.write("c output.cnf\n")
         ofile.write("c\n")
-        for i in range(0, num_clauses):
+        for i in range(0, int(num_clauses)):
             cl = gen_clause(variables)
             ofile.write(str(i) + " ")
             for j in range(0, len(cl)):
@@ -38,16 +38,6 @@ def gen_clause(variables):
     for i in range(0, clause_length):
         clause.append(choice(variables))
     return clause
-
-def get_params():
-    '''
-    Returns params: 
-    
-    0: num_vars
-    1: num_clauses (to generate)
-    2: write to stdout or file?
-    '''
-    pass
 
 def main():
     if len(sys.argv) < 2:
